@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;900&display=swap');
+
+:root{
+    --text: #fff;
+    --bg: #000;
+    --gray: #333333;
+}
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body{
+    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--text);
+    overflow-y: hidden;
+}
+
+.body_scroll{
+    overflow-y: auto;
+}
+
+main{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+::selection{
+    background: var(--text);
+    color: var(--bg);
+}
+
+a{
+    color: var(--text);
+    text-decoration: none;
+    outline: none;
+}
+
+textarea, button, input{
+    border: 0;
+    outline: 0;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--bg);
+    transition:  background ease-out 0.5s;
+}
+
+
+input::placeholder, textarea::placeholder{
+    color: var(--text);
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0;
+    background: rgba(0, 0, 0, 0.0);
+}
+
+
+
+
+
+.fade_out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    pointer-events: none;
+}
+.fade_out.fade_out_active {
+    opacity: 1;
+    transition-delay: 1s;
+    pointer-events: all;
+}
+
+
+
+.container{
+    transition: 1s;
+    transition-delay: 1s;
+}
+
+.hide_container{
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0s;
+}
+
+
+
+
+.progress{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gray);
+    pointer-events: none;
+}
+
+
+
+
+.preloader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    z-index: 12;
+    background: var(--bg);
+    transition: 1s;
+}
+
+.preloader::after,
+.preloader::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: var(--bg);
+}
+
+.preloader::after{
+    top: auto;
+    bottom: 0;
+}
+
+
+
+.preloader_hide{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader_video{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 auto;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s;
+}
+
+.preloader video{
+    opacity: 0.8;
+    width: 100%;
+}
+
+
+.preloader_data{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s;
+}
+
+.skip_btn{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader_show .skip_btn,
+.preloader_show .preloader_video,
+.preloader_show .preloader_data{
+    opacity: 1;
+    visibility: visible;
+}
+
+.preloader_show .percent{
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+
+.preloader_data .intro_item{
+    list-style: none;
+    position: absolute;
+    opacity: 0;
+    text-align: center;
+    color: var(--text);
+}
+
+.preloader_show .intro_item h4{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.preloader_show .intro_item li{
+    line-height: 40px;
+    font-size: 36px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.preloader_show .intro_item{
+    animation: preloader_data ease 4s;
+}
+
+.preloader_show .intro_item:nth-child(1){
+    animation-delay: 1s;
+}
+.preloader_show .intro_item:nth-child(2){
+    animation-delay: 6s;
+}
+
+
+
+@keyframes preloader_data {
+    0%{ opacity: 0; }
+    10%{ opacity: 1; }
+    90%{ opacity: 1; }
+    100%{ opacity: 0; }
+}
+
+
+
+
+
+.btn{
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    cursor: pointer;
+    color: var(--gray);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn:hover{
+    animation: btn ease 1s infinite;
+}
+
+@keyframes btn{
+    0%{opacity: 1;}
+    50%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+
+    .progress{
+        opacity: 0;
+    }
+
+    .preloader::after,
+    .preloader::before{
+        display: none;
+    }
+
+    .preloader_show .intro_item h4{
+        font-size: 14px;
+    }
+    
+    .preloader_show .intro_item li{
+        line-height: 30px;
+        font-size: 26px;
+    }
+}

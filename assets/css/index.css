@@ -1,0 +1,193 @@
+.preloader video{
+    max-width: 600px;
+    filter: grayscale(1);
+}
+
+.movies{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.movies .movie_item:last-child{
+    margin-right: 20px;
+}
+
+
+.movie_item{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 20px;
+    height: calc(70vh - 40px);
+    width: auto;
+    overflow: hidden;
+    transition: filter 0.8s;
+    filter: grayscale(1) brightness(80%);
+}
+
+.movie_item:hover{
+    filter: grayscale(0) brightness(100%);
+}
+
+.movie_item img{
+    height: 100%;
+    pointer-events: none;
+    transition: 1s;
+}
+
+
+
+
+
+.movie_title{
+    position: fixed;
+    top: 70vh;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 9;
+    font-size: 2.5vw;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0s;
+    transition: 1s;
+}
+
+
+.menu_show{
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 1s;
+}
+
+.menu_list{
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px 20px;
+}
+
+
+.menu_list a{
+    display: inline-block;
+    cursor: pointer;
+    font-size: 4vw;
+    color: var(--gray);
+    line-height: 6vw;
+    font-weight: 700;
+}
+
+.menu_list span{
+    font-size: 4vw;
+    font-weight: 700;
+    color: var(--gray);
+}
+
+.menu_list a:hover{
+    color: var(--text);
+}
+
+.menu_list a video{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: 1s;
+    filter: grayscale(1) brightness(50%);
+}
+
+.menu_list a:hover video{
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+
+    .preloader video{
+        max-width: auto;
+        width: 150%;
+    }
+    
+
+    .movies{
+        height: auto;
+        width: 100%;
+        overflow: auto;
+    }
+
+    .movie_item{
+        display: block;
+        position: relative;
+        height: auto;
+        width: calc(100vw - 40px);
+        filter: grayscale(0) brightness(100%);
+        margin: 40px 20px;
+    }
+    .movie_item img{
+        height: auto;
+        width: 100%;
+    }
+  
+    .movie_title{
+        display: none;
+    }
+    .movie_item h4{
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+
+    .menu_list{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    
+    .menu_list a{
+        font-size: 18px;
+        line-height: 40px;
+        font-weight: 500;
+    }
+
+    .menu_list span{
+        display: none;
+    }
+}
